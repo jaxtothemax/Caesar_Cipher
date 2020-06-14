@@ -22,7 +22,7 @@ def rot(input_string, rot_x):
             else:
                 arr.append(chr(97 + (character_shift % 122) - 1))
         
-        #Numbers letters, because why not?
+        #Numbers, because why not?
         elif 48 <= character <= 57:
             if number_shift <= 57:
                 arr.append(chr(number_shift))
