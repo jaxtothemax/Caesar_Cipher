@@ -3,30 +3,31 @@ def rot(input_string, rot_x):
 
     for char in input_string:
         character = ord(char)
-        shiftModulo = int(rot_x) % 25
-        characterShift = character + shiftModulo
+        shift_modulo = int(rot_x) % 25
+        shift_modulo_numbers = int(rot_x) % 10
+        character_shift = character + shift_modulo
+        number_shift = character + shift_modulo_numbers
 
         #Capital letters
         if 65 <= character <= 90:
-            if characterShift <= 90:
-                arr.append(chr(characterShift))
-                
+            if character_shift <= 90:
+                arr.append(chr(character_shift))
             else:
-                arr.append(chr(65 + (characterShift % 90) - 1))
+                arr.append(chr(65 + (character_shift % 90) - 1))
 
         #Small letters
         elif 97 <= character <= 122:
-            if characterShift <= 122:
-                arr.append(chr(characterShift))
+            if character_shift <= 122:
+                arr.append(chr(character_shift))
             else:
-                arr.append(chr(97 + (characterShift % 122) - 1))
+                arr.append(chr(97 + (character_shift % 122) - 1))
         
         #Numbers letters, because why not?
         elif 48 <= character <= 57:
-            if characterShift <= 57:
-                arr.append(chr(characterShift))
+            if number_shift <= 57:
+                arr.append(chr(number_shift))
             else:
-                arr.append(chr(48 + (characterShift % 57) - 1))
+                arr.append(chr(48 + (number_shift % 57) - 1))
 
         #Space
         elif character == 32:
@@ -34,8 +35,6 @@ def rot(input_string, rot_x):
 
         
     return ''.join(arr)
-    
-
 
 # This was Cesar's Cipher 1.0, however, I figured it's bad practice to nest for loops, because it causes big O notation --> O(n²)
 
