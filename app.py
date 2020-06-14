@@ -6,6 +6,7 @@ def rot(input_string, rot_x):
         shiftModulo = int(rot_x) % 25
         characterShift = character + shiftModulo
 
+        #Capital letters
         if 65 <= character <= 90:
             if characterShift <= 90:
                 arr.append(chr(characterShift))
@@ -13,12 +14,21 @@ def rot(input_string, rot_x):
             else:
                 arr.append(chr(65 + (characterShift % 90) - 1))
 
+        #Small letters
         elif 97 <= character <= 122:
             if characterShift <= 122:
                 arr.append(chr(characterShift))
             else:
                 arr.append(chr(97 + (characterShift % 122) - 1))
+        
+        #Numbers letters, because why not?
+        elif 48 <= character <= 57:
+            if characterShift <= 57:
+                arr.append(chr(characterShift))
+            else:
+                arr.append(chr(48 + (characterShift % 57) - 1))
 
+        #Space
         elif character == 32:
             arr.append(" ")
 
