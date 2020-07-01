@@ -10,7 +10,7 @@ def index():
 
 
 @app.route('/text', methods=['GET', 'POST'])
-def text(comments=[]):
+def text(comments=None):
     if request.method == "GET":
         return render_template("index.html", comments=comments)
     comments.append(request.form["text_input"])

@@ -21,43 +21,44 @@
   </div>
   <img src="../static/julius-skrrt_1x_right.png" alt="julius" class="juliusImg">
 
+  <script>
+    const sliderElement = document.getElementById("slider");
+    const sliderValueElement = document.getElementById("sliderValue");
+    
+    // Display the default slider value
+    sliderValueElement.innerHTML = sliderElement.value;
+    
+    // Update the current slider value (each time you drag the slider handle)
+    sliderElement.oninput = function() {
+        sliderValueElement.innerHTML = this.value;
+    }
+    
+    let inputTextElement = document.getElementById("inputText");
+    
+    $('#inputText').keyup(function () {
+        getCipher(inputTextElement.value, sliderValueElement.innerHTML);
+    });
+    
+    
+    $('#slider').change(function () {
+        getCipher(inputTextElement.value, sliderValueElement.innerHTML);
+    });
+    
+    
+    function getCipher (textValue, sliderValue) {
+        $.ajax({
+            type: "GET",
+            url: '/cipher',
+            data: {value: textValue, rot_x: sliderValue},
+            success: function(data){
+            document.getElementById("outputText").value = data;
+            },
+            dataType: "text"
+        })
+    }
+    
+  </script>
+  
 </body>
 </html>
 
-<script>
-const sliderElement = document.getElementById("slider");
-const sliderValueElement = document.getElementById("sliderValue");
-
-// Display the default slider value
-sliderValueElement.innerHTML = sliderElement.value;
-
-// Update the current slider value (each time you drag the slider handle)
-sliderElement.oninput = function() {
-    sliderValueElement.innerHTML = this.value;
-}
-
-let inputTextElement = document.getElementById("inputText");
-
-$('#inputText').keyup(function () {
-    getCipher(inputTextElement.value, sliderValueElement.innerHTML);
-});
-
-
-$('#slider').change(function () {
-    getCipher(inputTextElement.value, sliderValueElement.innerHTML);
-});
-
-
-function getCipher (textValue, sliderValue) {
-    $.ajax({
-        type: "GET",
-        url: '/cipher',
-        data: {value: textValue, rot_x: sliderValue},
-        success: function(data){
-        document.getElementById("outputText").value = data;
-        },
-        dataType: "text"
-    })
-}
-
-</script>
