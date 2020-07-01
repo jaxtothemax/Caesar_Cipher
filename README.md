@@ -1,4 +1,4 @@
-# Cesar-s-Cipher
+# Caesar's Cipher
 Solution to the second challenge of the Smartninja web development course. Python Flask (backend) + JS + Ajax + jQuery
 
 In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques.
